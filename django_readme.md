@@ -20,5 +20,10 @@ python -m pip install django==2.1.5
      + mysite/settings.py: Settings/configuration for this Django project.
      + mysite/urls.py: The URL declarations for this Django project  总的路由系统，经常导入很多app的路由系统
      + mysite/wsgi.py: An entry-point for WSGI-compatible web servers to serve your project.服务器部署
-    
+  3. python manage.py runserver           默认本地ip,8000
+     python manage.py runserver  8080  
+     ython manage.py runserver  0.8080
+     
+  4. 创建app
+    python manage.py startapp polls
       
