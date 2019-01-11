@@ -2,9 +2,9 @@
   python -m django --version  
 安装了以后查看django版本
 (```)
-python
-import django
-django.get_version()
+python  
+import django  
+django.get_version()  
 (```)
 #### 2、安装
 python -m pip install django==2.1.5  
