@@ -4,5 +4,4 @@
 ```
 python
 import django
-django.get_version()
-```
+django.get_version()```
