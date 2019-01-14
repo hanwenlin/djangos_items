@@ -43,4 +43,36 @@
 
 #### 二、开发环境搭建
 > 使用virtualenv 和 virtualenwrapper
+1. Mysql
+sudo apt install mysql-server mysql-client
+2. 安装mysql驱动
+pip install pymysql     //使用时经常需要在__Init__文件中加入as mysql啥的
+3. 安装django
+pip install django=2.1
+
+### 创建项目
+#### 创建项目和应用
+创建项目：  
+`django-admin startproject django_blog`
+创建app:  
+`python3 manage.py startapp userapp`
+`django-admin startapp blogapp`
+
+#### 配置数据库
++ 在settings文件中数据库
+
+#### 创建数据库（执行迁移文件）
+`python manage.py migrate`
+  + 错误1：django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.  Did you install mysqlclient?  
+    解决： Django安装目录下 __init__.py 文件中加入 import pymysql  pymysql.install_as_MySQLdb()
+    安装目录在：C:\Users\28277\AppData\Local\Programs\Python\Python36\Lib\site-packages\django
+  + 错误2： django.db.utils.InternalError: (1049, "Unknown database 'django_blog_db'")
+    settings数据库配置中有'NAME': 'django_blog_db',说明这个库名字。但是我后面对应的mysql里面没有这个库，需要建这个库，create database django_blog_db
+    
+  
+
+
+
+
+
   
