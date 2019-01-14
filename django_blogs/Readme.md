@@ -64,10 +64,30 @@ pip install django=2.1
 #### 创建数据库（执行迁移文件）
 `python manage.py migrate`
   + 错误1：django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.  Did you install mysqlclient?  
-    解决： Django安装目录下 __init__.py 文件中加入 import pymysql  pymysql.install_as_MySQLdb()
+    解决： Django安装目录下 __init__.py 文件中加入 import pymysql  pymysql.install_as_MySQLdb()  
     安装目录在：C:\Users\28277\AppData\Local\Programs\Python\Python36\Lib\site-packages\django
-  + 错误2： django.db.utils.InternalError: (1049, "Unknown database 'django_blog_db'")
+  + 错误2： django.db.utils.InternalError: (1049, "Unknown database 'django_blog_db'")  
     settings数据库配置中有'NAME': 'django_blog_db',说明这个库名字。但是我后面对应的mysql里面没有这个库，需要建这个库，create database django_blog_db
+    
+
+#### 创建超级管理员
+`python3 manage.py createsuperuser`
+
+
+### 创建数据模型
+#### USERAPP
+##### USER(用户模型)  Email验证模型  
+      见userapp里面的models.py  E:\Python_learn\django_blog\userapp\models.py
+> 提示：需要在settings配置文件中设置:AUTH_USER_MODEL = 'users.BlogUser'
+
+#### BLOGAPP
+#### Banner(轮播图模型)  Category(博客分类模型) Tags(标签模型)  Blog(博客模型) Comment(评论模型) FriendlyLink(友情链接模型)
+    见Blogapp中的models.py    E:\Python_learn\django_blog\blogapp\models.py
+    
+ 
+
+
+
     
   
 
