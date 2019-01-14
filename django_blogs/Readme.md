@@ -84,6 +84,13 @@ pip install django=2.1
 #### Banner(轮播图模型)  Category(博客分类模型) Tags(标签模型)  Blog(博客模型) Comment(评论模型) FriendlyLink(友情链接模型)
     见Blogapp中的models.py    E:\Python_learn\django_blog\blogapp\models.py
     
+  
+### 五、实现首页页面模板
+#### 创建模板文件夹
+#### 配置静态文件路径
+> 创建模板文件templates,静态文件路径static,并在settings.py中设置
+
+    
  
 
 
