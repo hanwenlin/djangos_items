@@ -1,0 +1,40 @@
+Django2.1.1与xadmin0.6.0遇到的坑
+棋帅小七关注5人评论5530人阅读2018-09-23 12:17:56
+（1）django2.0把from django.core.urlresolvers修改成了django.urls
+异常信息：
+ModuleNotFoundError: No module named 'django.core.urlresolvers'
+解决方案：
+修改site-packages\xadmin-0.6.1-py3.6.egg\xadmin\models.py
+将from django.core.urlresolvers import NoReverseMatch, reverse修改为from django.urls import NoReverseMatch, reverse
+（2）django2.1.1中需要给外键指定on_delete参数
+异常信息：
+TypeError: __init__() missing 1 required positional argument: 'on_delete'
+解决方案：
+把content_type = models.ForeignKey(ContentType)修改为content_type = models.ForeignKey(ContentType,on_delete=models.CASCADE)
+（3）django2.1.1的 forms表单初始化仅一个参数
+异常信息：
+TypeError: __init__() takes 1 positional argument but 6 were given
+解决方案：
+把forms.Field.__init__(self, required, widget, label, initial, help_text, *args, **kwargs) 修改成forms.Field.__init__(self)
+（4）Settings缺少MIDDLEWARE_CLASSES属性，django2.1.1把MIDDLEWARE_ClASSES改成MIDDLEWARE了
+异常信息：
+AttributeError: 'Settings' object has no attribute 'MIDDLEWARE_CLASSES'
+解决方案：
+把：
+if settings.LANGUAGES and 'django.middleware.locale.LocaleMiddleware' in settings.MIDDLEWARE_ClASSES:
+改成：
+if settings.LANGUAGES and 'django.middleware.locale.LocaleMiddleware' in settings.MIDDLEWARE:
+（5）django-formtools导入失败，需要更新django-formtools了
+异常信息：
+ModuleNotFoundError: No module named 'django.contrib.formtools'
+解决方案：
+pip uninstall django-formtools
+pip install django-formtools==2.1
+（6）提示导入QUERY_TERMS报错
+异常信息：
+ImportError: cannot import name 'QUERY_TERMS'
+解决方案：
+在Django2.0版本中把from django.db.models.sql.query import LOOKUP_SEP, QUERY_TERMS修改为：
+from django.db.models.sql.query import LOOKUP_SEP
+from django.db.models.sql.constants import QUERY_TERMS
+但是在Django2.1.1中还没找到答案，所以我决定自己写了一个后台放弃了xadmin...还好自己是个full stack develo
